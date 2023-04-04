@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getToDo = exports.createToDo = void 0;
+exports.deleteToDo = exports.getToDo = exports.createToDo = void 0;
 const task_1 = __importDefault(require("../model/task"));
 const createToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -29,8 +29,8 @@ const createToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
 exports.createToDo = createToDo;
 const getToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        var todos = yield task_1.default.find({});
-        return res.status(200).json({ message: "All todos!", data: todos });
+        var backend = yield task_1.default.find({});
+        return res.status(200).json({ message: "All todos!", data: backend });
     }
     catch (error) {
         return res.status(500).json({ message: error.message });
@@ -40,21 +40,24 @@ exports.getToDo = getToDo;
 // export const updateToDo: RequestHandler = async (req, res, next) => {
 //   try {
 //     const { id } = req.params;
-//     var todos = await Todo.findByIdAndUpdate(id, req.body, { new: true });
+//     var backend = await Todo.findByIdAndUpdate(id, req.body, { new: true });
 //     return res
 //       .status(200)
-//       .json({ message: "Todo updated successfully!", data: todos });
+//       .json({ message: "Todo updated successfully!", data: backend });
 //   } catch (error: any) {
 //     return res.status(500).json({ message: error.message });
 //   }
 // };
-// export const deleteToDo: RequestHandler = async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
-//     var isDeleted = await Todo.findByIdAndDelete(id);
-//     if (!isDeleted) throw new Error("Failed to delete todo");
-//     return res.status(200).json({ message: "Todo deleted successfully!" });
-//   } catch (error: any) {
-//     return res.status(500).json({ message: error.message });
-//   }
-// };
+const deleteToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        var isDeleted = yield task_1.default.findByIdAndDelete(id);
+        if (!isDeleted)
+            throw new Error("Failed to delete todo");
+        return res.status(200).json({ message: "Todo deleted successfully!" });
+    }
+    catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+});
+exports.deleteToDo = deleteToDo;

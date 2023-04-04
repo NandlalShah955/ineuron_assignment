@@ -3,7 +3,7 @@ import {
   createToDo,
   getToDo,
   // updateToDo,
-  // deleteToDo,
+  deleteToDo,
 } from "../controller/task";
 
 const router = Router();
@@ -14,6 +14,6 @@ router.get("/",getToDo );
 
 router.patch("/:id");
 
-router.delete("/:id");
+router.delete("/:id",deleteToDo);
 
 export default router;

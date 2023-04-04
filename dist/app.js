@@ -32,7 +32,7 @@ const task_1 = __importDefault(require("./routes/task"));
 const body_parser_1 = require("body-parser");
 const app = (0, express_1.default)();
 const PORT = 8080;
-const URL = "mongodb://localhost:27017/backend";
+const URL = "mongodb+srv://N:N@cluster0.4ibwcv2.mongodb.net/backend";
 app.use((0, body_parser_1.json)());
 app.use((0, body_parser_1.urlencoded)({ extended: true }));
 app.use("/task", task_1.default);

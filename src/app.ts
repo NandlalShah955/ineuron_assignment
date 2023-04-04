@@ -6,7 +6,7 @@ import { json, urlencoded } from "body-parser";
 
 const app = express();
 const PORT=8080;
-const URL="mongodb://localhost:27017/backend"
+const URL="mongodb+srv://N:N@cluster0.4ibwcv2.mongodb.net/backend"
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use("/task", todoRoutes);
