@@ -28,23 +28,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const mongoose = __importStar(require("mongoose"));
-const task_1 = __importDefault(require("./routes/task"));
+const index_1 = require("./config/index");
 const body_parser_1 = require("body-parser");
+const task_1 = __importDefault(require("./routes/task"));
 const app = (0, express_1.default)();
-const PORT = 8080;
-const URL = "mongodb+srv://N:N@cluster0.4ibwcv2.mongodb.net/backend";
-app.use((0, body_parser_1.json)());
+app.use(express_1.default.json());
 app.use((0, body_parser_1.urlencoded)({ extended: true }));
 app.use("/task", task_1.default);
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     res.status(500).json({ message: err.message });
 });
 mongoose
-    .connect(URL)
+    .connect(index_1.DB)
     .then(() => {
-    console.log("Connected to db");
-    app.listen(PORT, () => {
-        console.log(`Listening On PORT ${PORT}`);
+    console.log("Connected to database");
+    app.listen(index_1.PORT, () => {
+        console.log(`Listening On PORT ${index_1.PORT}`);
     });
 })
     .catch(() => {

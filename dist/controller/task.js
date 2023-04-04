@@ -12,54 +12,54 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteToDo = exports.updateToDo = exports.getToDo = exports.createToDo = void 0;
+exports.deleteTask = exports.updateTask = exports.getTask = exports.createTask = void 0;
 const task_1 = __importDefault(require("../model/task"));
-const createToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const createTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = req.body;
         var backend = yield task_1.default.create(data);
         return res
             .status(200)
-            .json({ message: "Todo created successfully", data: backend });
+            .json({ message: "COngo Task added", data: backend });
     }
     catch (error) {
         return res.status(500).json({ message: error.message });
     }
 });
-exports.createToDo = createToDo;
-const getToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.createTask = createTask;
+const getTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         var backend = yield task_1.default.find({});
-        return res.status(200).json({ message: "All todos!", data: backend });
+        return res.status(200).json({ data: backend });
     }
     catch (error) {
         return res.status(500).json({ message: error.message });
     }
 });
-exports.getToDo = getToDo;
-const updateToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getTask = getTask;
+const updateTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
         var backend = yield task_1.default.findByIdAndUpdate(id, req.body, { new: true });
         return res
             .status(200)
-            .json({ message: "Todo updated successfully!", data: backend });
+            .json({ message: "Task updated", data: backend });
     }
     catch (error) {
         return res.status(500).json({ message: error.message });
     }
 });
-exports.updateToDo = updateToDo;
-const deleteToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.updateTask = updateTask;
+const deleteTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
         var isDeleted = yield task_1.default.findByIdAndDelete(id);
         if (!isDeleted)
-            throw new Error("Failed to delete todo");
-        return res.status(200).json({ message: "Todo deleted successfully!" });
+            throw new Error("Failed to delete Task");
+        return res.status(200).json({ message: "Task deleted" });
     }
     catch (error) {
         return res.status(500).json({ message: error.message });
     }
 });
-exports.deleteToDo = deleteToDo;
+exports.deleteTask = deleteTask;

@@ -3,14 +3,14 @@
 import * as mongoose from "mongoose";
 import { Model } from "mongoose";
 
-type TodoType = TodoModel & mongoose.Document;
-export interface TodoModel {
+type TaskType = TaskModel & mongoose.Document;
+export interface TaskModel {
   title: {type: String,required: true,};
   description: {type: String,required: true,};
 }
-const TodosSchema = new mongoose.Schema({
+const TaskSchema = new mongoose.Schema({
   title: {type: String,required: true,},
   description: {type: String,required: true,},
 });
-const Todo: Model<TodoType> = mongoose.model < TodoType > ("Todo", TodosSchema);
-export default Todo;
+const Task: Model<TaskType> = mongoose.model < TaskType > ("Todo", TaskSchema);
+export default Task;

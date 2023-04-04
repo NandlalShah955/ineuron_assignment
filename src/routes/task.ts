@@ -1,19 +1,19 @@
 import { Router } from "express";
 import {
-  createToDo,
-  getToDo,
-  updateToDo,
-  deleteToDo,
+  createTask,
+  getTask,
+  updateTask,
+  deleteTask,
 } from "../controller/task";
 
 const router = Router();
 
-router.post("/", createToDo);
+router.get("/",getTask );
 
-router.get("/",getToDo );
+router.post("/", createTask);
 
-router.patch("/:id",updateToDo);
+router.patch("/:id",updateTask);
 
-router.delete("/:id",deleteToDo);
+router.delete("/:id",deleteTask);
 
 export default router;

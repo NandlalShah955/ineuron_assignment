@@ -1,30 +1,29 @@
 
 import express from "express";
 import * as mongoose from "mongoose";
-import todoRoutes from "./routes/task";
+import {DB,PORT} from "./config/index"
 import { json, urlencoded } from "body-parser";
+import taskRoutes from "./routes/task";
 
 const app = express();
-const PORT=8080;
-const URL="mongodb+srv://N:N@cluster0.4ibwcv2.mongodb.net/backend"
-app.use(json());
+
+app.use(express.json());
 app.use(urlencoded({ extended: true }));
-app.use("/task", todoRoutes);
+app.use("/task", taskRoutes);
 app.use(
   (
     err: Error,
     req: express.Request,
     res: express.Response,
-    next: express.NextFunction
   ) => {
     res.status(500).json({ message: err.message });
   }
 );
 
 mongoose
-  .connect(URL)
+  .connect(DB)
   .then(() => {
-    console.log("Connected to db");
+    console.log("Connected to database");
     app.listen(PORT, () => {
       console.log(`Listening On PORT ${PORT}`);
     });
