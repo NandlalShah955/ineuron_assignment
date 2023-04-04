@@ -5,6 +5,6 @@ const task_1 = require("../controller/task");
 const router = (0, express_1.Router)();
 router.post("/", task_1.createToDo);
 router.get("/", task_1.getToDo);
-router.patch("/:id");
+router.patch("/:id", task_1.updateToDo);
 router.delete("/:id", task_1.deleteToDo);
 exports.default = router;

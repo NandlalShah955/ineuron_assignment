@@ -2,7 +2,7 @@ import { Router } from "express";
 import {
   createToDo,
   getToDo,
-  // updateToDo,
+  updateToDo,
   deleteToDo,
 } from "../controller/task";
 
@@ -12,7 +12,7 @@ router.post("/", createToDo);
 
 router.get("/",getToDo );
 
-router.patch("/:id");
+router.patch("/:id",updateToDo);
 
 router.delete("/:id",deleteToDo);
 

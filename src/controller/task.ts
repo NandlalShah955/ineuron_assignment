@@ -23,17 +23,17 @@ export const getToDo: RequestHandler = async (req, res, next) => {
   }
 };
 
-// export const updateToDo: RequestHandler = async (req, res, next) => {
-//   try {
-//     const { id } = req.params;
-//     var backend = await Todo.findByIdAndUpdate(id, req.body, { new: true });
-//     return res
-//       .status(200)
-//       .json({ message: "Todo updated successfully!", data: backend });
-//   } catch (error: any) {
-//     return res.status(500).json({ message: error.message });
-//   }
-// };
+export const updateToDo: RequestHandler = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    var backend = await Todo.findByIdAndUpdate(id, req.body, { new: true });
+    return res
+      .status(200)
+      .json({ message: "Todo updated successfully!", data: backend });
+  } catch (error: any) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 
 export const deleteToDo: RequestHandler = async (req, res, next) => {
   try {
