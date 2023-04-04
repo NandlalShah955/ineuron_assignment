@@ -17,7 +17,6 @@ const task_1 = __importDefault(require("../model/task"));
 const createToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = req.body;
-        console.log("Data", data);
         var backend = yield task_1.default.create(data);
         return res
             .status(200)
