@@ -6,9 +6,7 @@ export const createTask: RequestHandler = async (req, res) => {
   try {
     const data: TaskModel = req.body;
     var backend = await Task.create(data);
-    return res
-      .status(200)
-      .json({ message: "COngo Task added", data: backend  });
+    return res.status(200).json({ message: "COngo Task added", data: backend });
   } catch (error: any) {
     return res.status(500).json({ message: error.message });
   }
@@ -17,7 +15,7 @@ export const createTask: RequestHandler = async (req, res) => {
 export const getTask: RequestHandler = async (req, res) => {
   try {
     var backend = await Task.find({});
-    return res.status(200).json({data: backend });
+    return res.status(200).json({ data: backend });
   } catch (error: any) {
     return res.status(500).json({ message: error.message });
   }
@@ -27,9 +25,7 @@ export const updateTask: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
     var backend = await Task.findByIdAndUpdate(id, req.body, { new: true });
-    return res
-      .status(200)
-      .json({ message: "Task updated", data: backend });
+    return res.status(200).json({ message: "Task updated", data: backend });
   } catch (error: any) {
     return res.status(500).json({ message: error.message });
   }
