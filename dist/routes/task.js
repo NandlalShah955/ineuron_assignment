@@ -4,7 +4,7 @@ const express_1 = require("express");
 const task_1 = require("../controller/task");
 const router = (0, express_1.Router)();
 router.post("/", task_1.createToDo);
-router.get("/");
+router.get("/", task_1.getToDo);
 router.patch("/:id");
 router.delete("/:id");
 exports.default = router;

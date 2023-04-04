@@ -50,13 +50,3 @@ mongoose
     .catch(() => {
     console.log("Unable to connect database");
 });
-// mongoose.connect("mongodb://localhost:27017/backend",()=>{
-//   console.log("Database connected");
-// });
-// app.listen(PORT,async()=>{
-//     try {
-//      console.log(`listening on ${PORT}`);
-//     } catch (error) {
-//         console.log(error)
-//     }
-// });

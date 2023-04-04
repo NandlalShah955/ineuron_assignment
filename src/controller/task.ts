@@ -14,14 +14,14 @@ export const createToDo: RequestHandler = async (req, res, next) => {
   }
 };
 
-// export const getToDo: RequestHandler = async (req, res, next) => {
-//   try {
-//     var todos = await Todo.find({});
-//     return res.status(200).json({ message: "All todos!", data: todos });
-//   } catch (error: any) {
-//     return res.status(500).json({ message: error.message });
-//   }
-// };
+export const getToDo: RequestHandler = async (req, res, next) => {
+  try {
+    var todos = await Todo.find({});
+    return res.status(200).json({ message: "All todos!", data: todos });
+  } catch (error: any) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 
 // export const updateToDo: RequestHandler = async (req, res, next) => {
 //   try {

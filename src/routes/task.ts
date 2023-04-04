@@ -1,7 +1,7 @@
 import { Router } from "express";
 import {
   createToDo,
-  // getToDo,
+  getToDo,
   // updateToDo,
   // deleteToDo,
 } from "../controller/task";
@@ -10,7 +10,7 @@ const router = Router();
 
 router.post("/", createToDo);
 
-router.get("/" );
+router.get("/",getToDo );
 
 router.patch("/:id");
 

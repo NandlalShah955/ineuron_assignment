@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createToDo = void 0;
+exports.getToDo = exports.createToDo = void 0;
 const task_1 = __importDefault(require("../model/task"));
 const createToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -27,14 +27,16 @@ const createToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, functio
     }
 });
 exports.createToDo = createToDo;
-// export const getToDo: RequestHandler = async (req, res, next) => {
-//   try {
-//     var todos = await Todo.find({});
-//     return res.status(200).json({ message: "All todos!", data: todos });
-//   } catch (error: any) {
-//     return res.status(500).json({ message: error.message });
-//   }
-// };
+const getToDo = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        var todos = yield task_1.default.find({});
+        return res.status(200).json({ message: "All todos!", data: todos });
+    }
+    catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+});
+exports.getToDo = getToDo;
 // export const updateToDo: RequestHandler = async (req, res, next) => {
 //   try {
 //     const { id } = req.params;
