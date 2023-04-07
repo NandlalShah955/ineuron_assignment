@@ -28,7 +28,8 @@ uncomment rootDir in tsconfig.json
 uncomment outDir in tsconfig.json
 "outDir":"./dist"
 </br>
+</br>
 In package.json do this inside script object 
-
 "watch":"tsc -w",
+</br>
 "start": "tsc && nodemon dist/app.js"
